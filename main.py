@@ -84,12 +84,14 @@ def getSiteData(url, name):
         lightcones = []
         
         # TRACES:
-        trace_elems = driver.find_elements(By.CLASS_NAME, 'sub-stats')
+        # trace_elems = driver.find_elements(By.CLASS_NAME, 'sub-stats')
+        trace_elems = driver.find_elements(By.XPATH, "//div[contains(@class, 'sub-stats')]")
         for elem in trace_elems:
             traces.append(elem.get_attribute('textContent').split(':', 1)[1])
         
         # RELICS & PLANETARY:        
-        relic_and_planetary_elems = driver.find_elements(By.CLASS_NAME, "relic-sets-rec")
+        # relic_and_planetary_elems = driver.find_elements(By.CLASS_NAME, "relic-sets-rec")
+        relic_and_planetary_elems = driver.find_elements(By.XPATH, "//div[contains(@class, 'relic-sets-rec')]")
         count = 1
         for elem in relic_and_planetary_elems:
             # print(elem.get_attribute('textContent'))
@@ -126,7 +128,8 @@ def getSiteData(url, name):
                 planetary.append(filtered_output)       
         
         # MAINSTATS:
-        main_elems = driver.find_elements(By.CLASS_NAME, 'list-stats')
+        # main_elems = driver.find_elements(By.CLASS_NAME, 'list-stats')
+        main_elems = driver.find_elements(By.XPATH, "//div[contains(@class, 'list-stats')]")
         headers = ['Body', 'Feet', 'Sphere', 'Rope']
         # count used to only get stats for headers
         count = 0
@@ -144,7 +147,8 @@ def getSiteData(url, name):
         substats = traces[0]        
         
         # LIGHTCONES:
-        cone_elems = driver.find_elements(By.CLASS_NAME, 'detailed-cones')
+        # cone_elems = driver.find_elements(By.CLASS_NAME, 'detailed-cones')
+        cone_elems = driver.find_elements(By.XPATH, "//div[contains(@class, 'detailed-cones')]")
         for elem in cone_elems:
             output = elem.get_attribute('innerText')
             # print(output)
